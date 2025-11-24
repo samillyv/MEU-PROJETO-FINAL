@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - MeuPet</title>
+  <link rel="stylesheet" href="/login/index.css">
+</head>
+<body>
+
+    <!--formulário de login-->
+
+  <form>
+  <div>
+    <h1>Login</h1> 
+    <br> </br>
+   <input type="email" name="email" id="email" oninput="validateFields()" placeholder="Seu@email.com">
+   <br> </br>
+<input type="password" name="password" id="password" oninput="validateFields()" placeholder="Senha">
+    <br> </br>
+<button type="button" class="solid" id="loginButton" disabled onclick="login()">Entrar</button>
+    <br> </br>
+    <button type="button" class="clear" id="cadButton">Cadastre-se</button>
+
+
+  </div>
+</form>
+
+
+  <script src="/login/index.js"></script>
+</body>
+
+
+
+
+
+</html>

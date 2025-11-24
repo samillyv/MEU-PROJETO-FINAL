@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meus Pets — Lista</title>
+
+  <link rel="stylesheet" href="/home/home.css">
+</head>
+<body>
+    
+    <header class="site-header" role="banner">
+  <div class="header-left">
+    <!-- botão hamburger (aparece no mobile) -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- logo + título -->
+    <a class="brand" href="home.html" aria-label="Ir para a página inicial">
+      <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#6c5ce7" d="M7.5 6.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM11.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM15.5 6.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM12 9.5c-1.9 0-4.5 1.2-4.5 3.7 0 2 1.8 4.3 4.5 4.3s4.5-2.3 4.5-4.3C16.5 10.7 13.9 9.5 12 9.5z"/>
+      </svg>
+      <div class="brand-text">
+        <strong>MeuPet</strong>
+        <small>Gerencie seus animais</small>
+      </div>
+    </a>
+  </div>
+
+  <!-- navegação principal (desktop) -->
+  <nav id="mainNav" class="main-nav" role="navigation" aria-label="Menu principal">
+    <a href="home.html" class="nav-link">Início</a>
+<a href="#" id="navAddPet" class="nav-link">Adicionar Pet</a>
+    <a href="#" class="nav-link">Contato</a>
+    <a href="#" class="nav-link">Sobre</a>
+  </nav>
+
+  <div class="header-right">
+    <input id="quickSearch" type="search" placeholder="Pesquisar nome, espécie, tutor..." aria-label="Pesquisar pets">
+    <button id="btnLogout" class="btn btn-ghost">Sair</button>
+  </div>
+</header>
+
+
+<!-- === Estatísticas === -->
+<section class="stats-section">
+  <div class="stats-card">
+    <div class="card-head">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4a90e2" d="M12 2L15 8H9L12 2zM6 9h12v11H6z"/></svg>
+      <h4>Total de pets</h4>
+    </div>
+    <p class="stats-value" id="totalPets">0</p>
+    <small class="stats-sub">Registros totais no sistema</small>
+  </div>
+
+  <div class="stats-card">
+    <div class="card-head">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#00b894" d="M12 2a5 5 0 015 5v3h-2V7a3 3 0 10-6 0v3H7V7a5 5 0 015-5zM6 13v6h12v-6H6z"/></svg>
+      <h4>Vacinados</h4>
+    </div>
+    <p class="stats-value" id="petsVacinados">0</p>
+    <small class="stats-sub">Quantidade com vacinação registrada</small>
+  </div>
+
+  <div class="stats-card">
+    <div class="card-head">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#6c5ce7" d="M12 2a9 9 0 100 18 9 9 0 000-18zM11 6h2v6h-2zM11 14h2v2h-2z"/></svg>
+      <h4>Último cadastro</h4>
+    </div>
+    <p class="stats-value" id="ultimoCadastro">—</p>
+    <small class="stats-sub">Nome — data do último pet registrado</small>
+  </div>
+  
+
+</section>
+
+<!-- filtro / ordenação modernizado -->
+<section class="filter-section">
+  <label for="sortSelect">Ordenar por:</label>
+  <!-- mantive id sortSelect para compatibilidade -->
+  <select id="sortSelect">
+    <option value="recent">Mais recentes</option>
+    <option value="name">Nome (A–Z)</option>
+    <option value="age">Idade (maior)</option>
+  </select>
+<label><button id="btnDeleteAll">Excluir Todos os Pets</button>
+</label>
+  <span id="mostrando" aria-live="polite">Mostrando 0 de 0</span>
+</section>
+<!-- === fim estatísticas === -->
+
+
+  <!-- CARROSSEL -->
+  <div class="carousel-wrap">
+    <button class="carousel-arrow left" id="carouselPrev" aria-label="Anterior">‹</button>
+
+    <div class="carousel" id="petsCarousel" tabindex="0" role="list">
+      <!-- cards inseridos pelo JS -->
+    </div>
+
+    <button class="carousel-arrow right" id="carouselNext" aria-label="Próximo">›</button>
+  </div>
+
+  
+</section>
+
+  </main>
+
+  
+
+  <!-- modal (vamos usar JS para abrir / fechar) -->
+  <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true" style="display:none">
+    <div class="modal">
+      <h3 id="modalTitle">Adicionar Pet</h3>
+      <form id="petForm" class="form-grid" novalidate>
+        <label>Foto do pet
+  <input type="file" id="fieldPhoto" accept="image/*">
+</label>
+        <input type="hidden" id="petId">
+        <label>Nome<input id="fieldName" required></label>
+        <label>Espécie
+          <select id="fieldSpecies">
+            <option>Cachorro</option><option>Gato</option><option>Pássaro</option><option>Outro</option>
+          </select>
+        </label>
+        <label>Raça<input id="fieldBreed"></label>
+        <label>Idade (anos)<input id="fieldAge" type="number" step="0.1" min="0"></label>
+        <label>Tutor<input id="fieldOwner"></label>
+        <label>Telefone<input id="fieldPhone" placeholder="(11) 9xxxx-xxxx"></label>
+        <label class="full">Observações<textarea id="fieldNotes"></textarea></label>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button type="button" id="btnCancel" class="btn btn-ghost">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <!-- popit de adicionar pet -->
+
+ <div id="popitAddPet" class="popit" style="display:none;">
+  <h3>Adicionar Pet</h3>
+  <input type="text" id="popitName" placeholder="Nome do pet" />
+  <input type="text" id="popitSpecies" placeholder="Espécie" />
+  <input type="text" id="popitBreed" placeholder="Raça" />
+  <input type="text" id="popitsex" placeholder="Sexo" />
+  <input type="number" id="popitAge" placeholder="Idade" />
+  <input type="text" id="popitOwner" placeholder="Tutor" />
+  <input type="text" id="popitPhone" placeholder="Telefone" />
+  <textarea id="popitNotes" placeholder="Observações"></textarea>
+  <label for="popitPhoto" class="btn-photo">Escolher foto do pet</label>
+<input type="file" id="popitPhoto" accept="image/*" style="display:none;" />
+  <button id="popitSave">Salvar</button>
+  <button id="popitCancel">Cancelar</button>
+</div>
+
+
+  
+  <script src="/home/home.js"></script>
+</body>
+</html>
