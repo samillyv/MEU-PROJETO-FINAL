@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (info) info.textContent = `Mostrando ${list.length} de ${all.length}`;
   }
 
-  // Delegação de eventos
+  // ações
   carousel.addEventListener('click', (ev) => {
     const more = ev.target.closest('.more-btn');
     const edit = ev.target.closest('.edit-btn');
@@ -247,10 +247,10 @@ document.getElementById('popitCancel').addEventListener('click', () => {
   clearPopitFields();
 });
 
-// Remove listeners antigos
+
 function clearPopitSaveListener() {
   const saveBtn = document.getElementById('popitSave');
-  const newBtn = saveBtn.cloneNode(true); // clona sem listeners
+  const newBtn = saveBtn.cloneNode(true); 
   saveBtn.parentNode.replaceChild(newBtn, saveBtn);
   return newBtn;
 }
@@ -342,7 +342,7 @@ function openPopitEdit(id) {
     popit.style.display = 'none';
     clearPopitFields();
 
-    setupAddPet(); // volta para salvar novos pets
+    setupAddPet(); 
   });
   document.getElementById('popitPhoto').value = '';
 }
