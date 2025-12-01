@@ -6,7 +6,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== Header moderno e responsivo ===== */
+/* ===== Header ===== */
 .site-header{
   display:flex;
   align-items:center;
@@ -40,14 +40,12 @@ body {
 .main-nav .nav-link{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:8px;font-size:14px}
 .main-nav .nav-link:hover{background:rgba(0,0,0,0.04);color:var(--text)}
 
-/* header-right (search + actions) */
 .header-right{display:flex;align-items:center;gap:10px}
 .header-right input[type="search"]{padding:9px 12px;border-radius:10px;border:1px solid #e6e9ef;background:#fff;outline:none;width:320px;max-width:38vw}
 .btn{padding:9px 12px;border-radius:10px;border:0;cursor:pointer}
 .btn-primary{background:var(--accent);color:#fff}
 .btn-ghost{background:transparent;border:1px solid #e6e9ef;color:var(--muted)}
 
-/* ===== Mobile adjustments ===== */
 @media (max-width:900px){
   .header-right input[type="search"]{display:none}
   .main-nav{display:none;position:absolute;top:64px;left:12px;right:12px;background:#fff;padding:12px;border-radius:10px;box-shadow:0 18px 40px rgba(2,6,23,0.12);flex-direction:column;gap:8px}
@@ -83,12 +81,12 @@ body {
   width:100%;
 }
 
-/* cada card tem scroll-snap para alinhar */
+
 .pet-card{
   background:#fff;
   border-radius:12px;
   box-shadow:0 8px 24px rgba(16,24,40,0.06);
-  min-width: calc((100% / 3) - 12px); /* padrão 3 por tela */
+  min-width: calc((100% / 3) - 12px); 
   max-width: calc((100% / 3) - 12px);
   padding:12px;
   scroll-snap-align:center;
@@ -98,7 +96,7 @@ body {
   transition:transform .12s ease, box-shadow .12s ease;
 }
 
-/* hover sutil */
+
 .pet-card:hover{ transform:translateY(-4px); box-shadow:0 16px 36px rgba(16,24,40,0.12); }
 
 /* imagem do pet */
@@ -121,7 +119,7 @@ body {
 .more-btn{ background:#f1f5f9; color:var(--text) }
 .edit-btn{ background:var(--accent-2); color:#fff }
 
-/* detalhes expandidos (inicialmente escondido) */
+/* detalhes extras (inicialmente escondidos) */
 .pet-details{ display:none; padding:8px 6px; border-top:1px solid #f1f3f5; font-size:13px; color:#374151; margin-top:6px }
 .pet-details.show{ display:block }
 
@@ -133,17 +131,16 @@ body {
   display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(2,6,23,0.06)
 }
 
-/* esconder bordas de rolagem em WebKit para visual mais limpo */
 .carousel::-webkit-scrollbar{ height:10px; }
 .carousel::-webkit-scrollbar-thumb{ background:rgba(16,24,40,0.06); border-radius:10px }
 
 /* RESPONSIVO: 2 cards por viewport em telas pequenas */
 @media (max-width:900px){
   .pet-card{ min-width: calc((100% / 2) - 12px); max-width: calc((100% / 2) - 12px) }
-  .header-right input[type="search"]{ display:none } /* mantém sua escolha */
+  .header-right input[type="search"]{ display:none } 
 }
 
-/* ainda menor: 1 por vez */
+/* 1 card */
 @media (max-width:420px){
   .pet-card{ min-width: calc(100% - 24px); max-width: calc(100% - 24px) }
   .carousel-arrow{ display:none } /* UX: esconder setas se 1 card por vez */
@@ -187,7 +184,7 @@ body {
 
 .card-actions .edit-btn {
   display: inline-block;
-  background: #fbbf24;
+  background: burlywood;
   color: black;
   padding: 6px 12px;
   border-radius: 6px;

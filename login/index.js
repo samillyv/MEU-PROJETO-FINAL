@@ -46,5 +46,3 @@ document.addEventListener('DOMContentLoaded', function() {
     cad.addEventListener('click', irParaCadastro);
   }
 });
-
-

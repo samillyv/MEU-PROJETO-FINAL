@@ -11,14 +11,13 @@
     
     <header class="site-header" role="banner">
   <div class="header-left">
-    <!-- botão hamburger (aparece no mobile) -->
+    <!-- botão hamburger -->
     <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
 
-    <!-- logo + título -->
     <a class="brand" href="home.html" aria-label="Ir para a página inicial">
       <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true">
         <path fill="#6c5ce7" d="M7.5 6.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM11.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM15.5 6.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM12 9.5c-1.9 0-4.5 1.2-4.5 3.7 0 2 1.8 4.3 4.5 4.3s4.5-2.3 4.5-4.3C16.5 10.7 13.9 9.5 12 9.5z"/>
@@ -77,10 +76,9 @@
 
 </section>
 
-<!-- filtro / ordenação modernizado -->
+<!-- filtro / ordenação -->
 <section class="filter-section">
   <label for="sortSelect">Ordenar por:</label>
-  <!-- mantive id sortSelect para compatibilidade -->
   <select id="sortSelect">
     <option value="recent">Mais recentes</option>
     <option value="name">Nome (A–Z)</option>
@@ -90,7 +88,6 @@
 </label>
   <span id="mostrando" aria-live="polite">Mostrando 0 de 0</span>
 </section>
-<!-- === fim estatísticas === -->
 
 
   <!-- CARROSSEL -->
@@ -98,7 +95,6 @@
     <button class="carousel-arrow left" id="carouselPrev" aria-label="Anterior">‹</button>
 
     <div class="carousel" id="petsCarousel" tabindex="0" role="list">
-      <!-- cards inseridos pelo JS -->
     </div>
 
     <button class="carousel-arrow right" id="carouselNext" aria-label="Próximo">›</button>
@@ -111,7 +107,6 @@
 
   
 
-  <!-- modal (vamos usar JS para abrir / fechar) -->
   <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true" style="display:none">
     <div class="modal">
       <h3 id="modalTitle">Adicionar Pet</h3>
